@@ -7,21 +7,21 @@ class segment(object):
 		self.x = x
 		# y coordinate of centroid of bounding box
 		self.y = y
-		# width of bounding box
+		# Width of bounding box
 		self.w = w
-		# height of bounding box
+		# Weight of bounding box
 		self.h = h
 
 
 
-# Function that returns the LaTeX code corresponding to the 
+# Function that returns the LaTeX code corresponding to the segments.
 def getLatex(segments):
 
 	expr = []
 	# Assuming that the first segment corresponds to a character that is... 'normal' script.
 	expr.append(segments[0].ch)
 
-	for i in range(len(segments)):
+	for i in range(1, len(segments)):
 		curr = segments[i]
 		prev = segments[i - 1]
 
@@ -36,7 +36,7 @@ def getLatex(segments):
 			expr.append(curr.ch)
 			expr.append('}')
 
-		# Suberscript test
+		# Superscript test
 		elif curr.y > prev.y + prev.h / 2:
 			expr.append('^{')
 			expr.append(curr.ch)
